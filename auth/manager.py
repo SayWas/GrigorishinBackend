@@ -1,3 +1,4 @@
+import re
 from threading import Thread
 from typing import Optional
 
@@ -22,9 +23,23 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         Thread(target=send_reset_password_mail, args=(user.email, token)).start()
 
     async def on_after_reset_password(
-        self, user: models.UP, request: Optional[Request] = None
+            self, user: models.UP, request: Optional[Request] = None
     ) -> None:
         print("reset")
+
+    async def validate_password(self, password: str, user: models.UP):
+        if len(password) < 8:
+            raise exceptions.InvalidPasswordException(
+                reason="Password should be at least 8 characters"
+            )
+        if len(password) > 1024:
+            raise exceptions.InvalidPasswordException(
+                reason="Password is too long"
+            )
+        if re.match("^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?]).*$", password) is None:
+            raise exceptions.InvalidPasswordException(
+                reason="Password should contain at least one letter, one number and one special character"
+            )
 
     async def create(
             self,
