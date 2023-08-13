@@ -8,6 +8,4 @@ COPY requirements.txt /fastapi-app
 
 RUN pip install -r requirements.txt
 
-RUN sudo chmod a+rwx docker
-
 COPY . /fastapi-app
