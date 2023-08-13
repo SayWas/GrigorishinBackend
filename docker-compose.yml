@@ -50,9 +50,9 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./nginx-backend.conf:/etc/nginx/nginx.conf
-      - ./data/certbot-backend/conf:/etc/letsencrypt:ro
-      - ./data/certbot-backend/www:/var/www/certbot:ro
+      - ./nginx.conf:/etc/nginx-backend/nginx.conf
+      - ./data/certbot/conf:/etc/letsencrypt-backend:ro
+      - ./data/certbot/www:/var/www/certbot-backend:ro
     depends_on:
       - db
       - pgadmin
@@ -63,8 +63,8 @@ services:
     image: certbot/certbot:latest
     container_name: certbot-backend
     volumes:
-      - ./data/certbot-backend/conf:/etc/letsencrypt:rw
-      - ./data/certbot-backend/www:/var/www/certbot:rw
+      - ./data/certbot/conf:/etc/letsencrypt-backend:rw
+      - ./data/certbot/www:/var/www/certbot-backend:rw
     depends_on:
       - nginx-backend
-    command: certonly --webroot --webroot-path=/var/www/certbot --email saifulinvladislav@gmail.com --agree-tos --no-eff-email -d api.grigorishin.net
+    command: certonly --webroot --webroot-path=/var/www/certbot-backend --email saifulinvladislav@gmail.com --agree-tos --no-eff-email -d api.grigorishin.net
