@@ -10,7 +10,7 @@ from courses.router import courses_router
 from library.router import library_router
 from schedule.router import schedule_router
 
-app = FastAPI(title="Grigorishin Api", docs_url=None, redoc_url=None)
+app = FastAPI(title="Grigorishin Api")
 
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
@@ -47,8 +47,9 @@ app.include_router(comments_router)
 app.include_router(schedule_router)
 
 origins = [
-    "https://grigorishin.net"
-    "https://www.grigorishin.net"
+    "http://localhost",
+    "https://localhost",
+    "http://localhost:8080"
 ]
 
 app.add_middleware(
