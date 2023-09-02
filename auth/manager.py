@@ -7,13 +7,13 @@ from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, s
 
 from auth.email_service import send_reset_password_mail
 from auth.utils import get_user_db
-from config import AUTH_SECRET
+from config import RESET_SECRET, VERIFICATION_SECRET
 from models import User
 
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
-    reset_password_token_secret = AUTH_SECRET
-    verification_token_secret = AUTH_SECRET
+    reset_password_token_secret = RESET_SECRET
+    verification_token_secret = VERIFICATION_SECRET
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
         print(f"User {user.id} has registered.")
