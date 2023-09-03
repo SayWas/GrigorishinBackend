@@ -49,6 +49,7 @@ app.include_router(schedule_router)
 origins = [
     "http://localhost",
     "https://localhost",
+    "http://localhost:5173",
     "http://localhost:8080"
 ]
 
