@@ -13,7 +13,7 @@ class BaseCourse(BaseModel):
     subtitle: str
     description: str
     image_link: str
-    # link: HttpUrl
+    link: HttpUrl
     price: int
     starting_at: datetime
 
