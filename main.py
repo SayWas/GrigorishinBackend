@@ -47,12 +47,8 @@ app.include_router(courses_router)
 app.include_router(schedule_router)
 
 origins = [
-    # "https://grigorishin.net",
-    # "https://www.grigorishin.net",
-    "http://localhost",
-    "https://localhost",
-    "http://localhost:5173",
-    "http://localhost:8080"
+    "https://grigorishin.net",
+    "https://www.grigorishin.net"
 ]
 
 app.add_middleware(
