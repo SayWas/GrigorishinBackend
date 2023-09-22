@@ -23,8 +23,8 @@ services:
     depends_on:
       - db
     environment:
-      - PGADMIN_DEFAULT_EMAIL=saifulinvladislav@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=VLAD007vlad!
+      - PGADMIN_DEFAULT_EMAIL=grigorishinsv@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=F6J48XGChKxfGAW
       - PGADMIN_LISTEN_PORT=5050
       - PGADMIN_LISTEN_ADDRESS=0.0.0.0
     volumes:
